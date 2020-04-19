@@ -1,0 +1,11 @@
+<div>
+    <p>Please select a piece:</p>
+    <table>
+        <tr>
+            <td *ngFor="let piece of pieces"
+            (click)="onClick(piece)"> 
+            <div class="pieceType{{piece}} pieceToSelect" [routerLink]="['/board', piece]"></div>
+            </td>
+        </tr>
+    </table>
+</div>

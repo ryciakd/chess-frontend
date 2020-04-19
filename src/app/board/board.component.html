@@ -1,0 +1,15 @@
+<p *ngIf="piecePostion === null">Please select where to place the piece:</p>
+<p *ngIf="piecePostion !== null">Click on the piece to see all possible moves.</p>
+
+<div>
+    <table border="1" bordercolor="brown">
+        <tr *ngFor="let row of board; let j = index">
+            <td *ngFor="let col of row; let k = index"
+            [ngClass]="(j+k)%2 === 1 ? 'tileBrown' : 'tileYellow'"
+            id="b{{j}}{{k}}"
+            (click)="onClick(j, k)"> 
+            <div class="tile pieceType{{board[j][k]}}"></div>
+            </td>
+        </tr>
+    </table>
+</div>
