@@ -7,7 +7,6 @@ import { Injectable } from '@angular/core';
 
 @Injectable()
 export class BoardService {
-
     backendUrl = "https://localhost:44309/api/board";
     
     constructor(private readonly http: HttpClient) {}
@@ -37,6 +36,10 @@ export class BoardService {
         };
 
         return this.http.get<MovementCheck>(`${this.backendUrl}/check`, options);
+    }
+
+    getAvailablePieces(): Observable<PieceType[]> {
+        return this.http.get<PieceType[]>(`${this.backendUrl}/pieces`);
     }
 
 }

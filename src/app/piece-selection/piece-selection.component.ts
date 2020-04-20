@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { PieceType } from '../common/piece-type';
-import { PieceService } from '../services/piece.service';
+import { BoardService } from '../services/board.service';
 
 @Component({
   selector: 'app-piece-selection',
@@ -11,16 +11,11 @@ export class PieceSelectionComponent implements OnInit {
 
   pieces: PieceType[];
 
-  constructor(private readonly pieceService: PieceService) { }
+  constructor(private readonly boardService: BoardService) { }
 
   ngOnInit(): void {
-    this.pieceService.getAvailablePieces().subscribe(result => {
+    this.boardService.getAvailablePieces().subscribe(result => {
       this.pieces = result;
     })
   }
-
-  onClick(piece: PieceType){
-    console.log(piece);
-  }
-
 }

@@ -10,7 +10,6 @@ import { BoardService } from './services/board.service';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { PieceService } from './services/piece.service';
 import { RouterModule } from '@angular/router';
 import { HttpErrorInterceptor } from './common/http-error.interceptor';
 
@@ -33,7 +32,6 @@ import { HttpErrorInterceptor } from './common/http-error.interceptor';
   ],
   providers: [
     BoardService,
-    PieceService,
     {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
