@@ -9,10 +9,10 @@ import { BoardService } from './services/board.service';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { ToastrModule } from 'ngx-toastr';
-import { HttpClientModule } from '@angular/common/http';
-import { PieceType } from './common/piece-type';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { PieceService } from './services/piece.service';
 import { RouterModule } from '@angular/router';
+import { HttpErrorInterceptor } from './common/http-error.interceptor';
 
 @NgModule({
   declarations: [
@@ -31,7 +31,10 @@ import { RouterModule } from '@angular/router';
       { path: 'board/:pieceId', component: BoardComponent },
     ])
   ],
-  providers: [BoardService, PieceService],
+  providers: [
+    BoardService,
+    PieceService,
+    {provide: HTTP_INTERCEPTORS, useClass: HttpErrorInterceptor, multi: true}],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

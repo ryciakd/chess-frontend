@@ -1,8 +1,8 @@
-<p *ngIf="piecePostion === null">Please select where to place the piece:</p>
-<p *ngIf="piecePostion !== null">Click on the piece to see all possible moves.</p>
-
-<div>
-    <table border="1" bordercolor="brown">
+<div class="center-screen">
+    <p *ngIf="piecePostion === null">Please select where to place the piece:</p>
+    <p *ngIf="piecePostion !== null && !pieceClicked">Click on the piece to see all possible moves:</p>
+    <p *ngIf="pieceClicked">Click on any highligted tile to move:</p>
+    <table>
         <tr *ngFor="let row of board; let j = index">
             <td *ngFor="let col of row; let k = index"
             [ngClass]="(j+k)%2 === 1 ? 'tileBrown' : 'tileYellow'"

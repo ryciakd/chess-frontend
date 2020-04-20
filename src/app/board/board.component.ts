@@ -24,7 +24,6 @@ export class BoardComponent implements OnInit {
     private readonly toastr: ToastrService) {
 
     this.piecePostion = null;
-    this.toastr.toastrConfig.positionClass = 'toast-bottom-left';
     this.board =  [
       [0,0,0,0,0,0,0,0], 
       [0,0,0,0,0,0,0,0], 
@@ -53,11 +52,11 @@ export class BoardComponent implements OnInit {
     }
     
     if(!this.pieceClicked && this.board[row][column] === this.pieceSelected){
-      this.pieceClicked = true;
       this.boardService.getAvailableMoves(this.pieceSelected, this.piecePostion).subscribe(moves => {
         moves.forEach(move => {
           this.board[move.row][move.column] = -1;
         })
+        this.pieceClicked = true;
       });
       return;
     } 

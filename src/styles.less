@@ -6,10 +6,24 @@ td {
     overflow: auto;
 }
 
-div.pieceType1 {
-    content:url(/assets/pieces/rook.png);
+p {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: large;
 }
 
-div.pieceType2 {
-    content:url(/assets/pieces/queen.jpg);
+div {     
+    &.pieceType1 {
+        content:url(/assets/pieces/rook.png);
+    }
+    &.pieceType2 {
+        content:url(/assets/pieces/queen.jpg);
+    }
+    &.center-screen {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        min-height: 100vh;
+      }
 }
